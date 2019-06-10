@@ -4,21 +4,27 @@ from SentClassifer import SentenceClassifier
 class ParagraphClassifier(object):
     """docstring for ParagraphClassifier"""
 
-    def __init__(self, sthr=None, rules=[], rweight=[], ):
+    def __init__(self, sthr:str=None, rules=[], rweight=[], ):
         #super(ParagraphClassifier, self).__init__()
-        self.split_thr = sthr
+        self.split_thr = sthr # 分割的门槛长度
         self.rules = rules
         self.clf = SentenceClassifier()
         self.result = None
+
     def predict(self, X):
-        pass
+        """
+        X 为数据框 数据类型
+        """
         if split_thr is not None:
             X = self._reprocess(X)
+            
+        if self.rules is not None:
+            X['target'] = X['sent'].progress_apply(
+                lambda x: const.NEG if self._check_rule(x) else None)
 
-        X['target'] = X['sent'].progress_apply(
-            lambda x: const.NEG if self._check_rule(x) else None)
+
         X['target'] = X['sent'].progress_apply()
-        
+
     def _check_rule(self, x: str):
         for f in self.rules:
             if f(x):
