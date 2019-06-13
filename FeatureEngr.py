@@ -2,6 +2,35 @@ import os
 import sys
 import const
 
+if __name__ == '__main__':
+    extract_features()
+
+
+def extract_features(isBasic=False):
+    """  """
+    if isBasic:
+        X = _extract_basicfeatures(X)
+    X = _extract_langfeatures(X)
+
+
+def _extract_langfeatures(X):
+
+    return X
+
+
+def _extract_basicfeatures(X):
+    return X
+
+
+def dropfeatures(featlist: List):
+    df = pd.read_csv(os.path.join(const.DATAPATH, ))
+    return X
+
+
+
+
+
+
     def getData():
         return pd.read_csv(os.path.join(const., ))
 
@@ -15,7 +44,7 @@ import const
 
     def checkdata():
     """检查数据是否存在"""
-        # raise
+    # raise
         pass
 
     def fit():

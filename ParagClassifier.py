@@ -1,10 +1,12 @@
 from SentClassifer import SentenceClassifier
 
+import FilterRules as FR
+
 
 class ParagraphClassifier(object):
     """docstring for ParagraphClassifier"""
 
-    def __init__(self, sthr:str=None, rules=[], rweight=[], ):
+    def __init__(self, sthr:str=None):
         #super(ParagraphClassifier, self).__init__()
         self.split_thr = sthr # 分割的门槛长度
         self.rules = rules
