@@ -1,6 +1,6 @@
 
 
-from Discriminant import 
+from Discriminant import decisiontree
 
 
 
@@ -8,7 +8,7 @@ from Discriminant import
 
 def main():
 
-	
+
 
 
 if __name__ == '__main__':

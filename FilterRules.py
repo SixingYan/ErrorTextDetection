@@ -11,11 +11,14 @@ TO-DO:
 '''
 from typing import List
 import pandas as pd
+import re
+import os
 
 if __name__ == '__main__':
     filtering('', '')
     # exploring()
     # noFiltering()
+
 
 def noFiltering():
     """"""
@@ -24,7 +27,7 @@ def noFiltering():
     df['predict'] = None
 
     df.to_csv(os.path.join(const.DATAPATH, target), index=None)
-    
+
 
 def exploring(source, thrList: List=None):
     def countCor(sent, chars, words, target):
@@ -43,26 +46,18 @@ def exploring(source, thrList: List=None):
 
 
 def filtering(source, target):
-    pass
-
-    def check(sent, chars, words, target)->bool:
-        if toFilter(sent, chars, words) is True:
-            return const.NEG
-        return None
-
     df = pd.read_csv(os.path.join(const.DATAPATH, source))
 
-    df['predict'] = df.progress_apply(lambda x: check(x.sent, x.chars, x.words, x.target))
+    df['predict'] = df.progress_apply(lambda x: toFilter(x.sent, x.chars, x.words))
 
     df.to_csv(os.path.join(const.DATAPATH, target), index=None)
 
 
 def toFilter(sent, chars, words, thrList: List=None)->bool:
-    """唯一对外的方法"""
-    res = False
-
+    """返回触发的过滤规则"""
+    res = None
     if _isLen(sent) is True:
-        return res
+        return '_isLen'
     elif _hasCnRate(sent) is True:
         return res
     elif _isReaptChars(chars) is True:
