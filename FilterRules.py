@@ -19,16 +19,6 @@ if __name__ == '__main__':
     # exploring()
     # noFiltering()
 
-
-def noFiltering():
-    """"""
-    df = pd.read_csv(os.path.join(const.DATAPATH, source))
-
-    df['predict'] = None
-
-    df.to_csv(os.path.join(const.DATAPATH, target), index=None)
-
-
 def exploring(source, thrList: List=None):
     def countCor(sent, chars, words, target):
         if toFilter(sent, chars, words) == (True if target == const.NEG else False):
@@ -48,7 +38,7 @@ def exploring(source, thrList: List=None):
 def filtering(source, target):
     df = pd.read_csv(os.path.join(const.DATAPATH, source))
 
-    df['predict'] = df.progress_apply(lambda x: toFilter(x.sent, x.chars, x.words))
+    df['isfilter'] = df.progress_apply(lambda x: toFilter(x.sent, x.chars, x.words))
 
     df.to_csv(os.path.join(const.DATAPATH, target), index=None)
 

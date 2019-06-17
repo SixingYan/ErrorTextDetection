@@ -254,3 +254,4 @@ $RECYCLE.BIN/
 *.word2vec
 *config.toml
 *.pth
+*.model
